@@ -10,8 +10,14 @@ import com.squareup.picasso.Callback
 import com.squareup.picasso.Picasso
 import de.hdodenhof.circleimageview.CircleImageView
 
-class RecyclerViewAdapter(private val mUsers: List<User>) :
+class RecyclerViewAdapter :
     RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder>() {
+
+    var mUsers = emptyList<User>()
+        set(value) {
+            notifyDataSetChanged()
+            field = value
+        }
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val username = itemView.findViewById<TextView>(R.id.username)
@@ -43,6 +49,7 @@ class RecyclerViewAdapter(private val mUsers: List<User>) :
                 override fun onSuccess() {
                     progressBar.visibility = View.GONE
                 }
+
                 override fun onError(e: Exception?) {
                     progressBar.visibility = View.GONE
                 }

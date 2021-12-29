@@ -10,6 +10,10 @@ class MainViewModel : ViewModel() {
 
     private var mUsers = MutableLiveData<List<User>>()
     var users = mUsers
+    private var mUserListProgressBar = MutableLiveData<Boolean>().apply {
+        this.value = true
+    }
+    var userListProgressBar = mUserListProgressBar
 
     fun getUsers() {
         val retrofitClient =
@@ -19,6 +23,7 @@ class MainViewModel : ViewModel() {
         callback.enqueue(object : Callback<List<User>> {
             override fun onFailure(call: Call<List<User>>, t: Throwable) {
                 mUsers.value = ArrayList()
+                mUserListProgressBar.value = false
             }
 
             override fun onResponse(call: Call<List<User>>, response: Response<List<User>>) {
@@ -27,6 +32,7 @@ class MainViewModel : ViewModel() {
                 } else {
                     mUsers.value = ArrayList()
                 }
+                mUserListProgressBar.value = false
             }
         })
 
