@@ -10,7 +10,7 @@ import com.squareup.picasso.Callback
 import com.squareup.picasso.Picasso
 import de.hdodenhof.circleimageview.CircleImageView
 
-class RecyclerViewAdapter(private val mUsuarios: List<Usuario>) :
+class RecyclerViewAdapter(private val mUsers: List<User>) :
     RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder>() {
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -28,16 +28,16 @@ class RecyclerViewAdapter(private val mUsuarios: List<Usuario>) :
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val usuario: Usuario = mUsuarios[position]
+        val user: User = mUsers[position]
         val username = holder.username
-        username.text = usuario.username
+        username.text = user.username
         val name = holder.name
-        name.text = usuario.name
+        name.text = user.name
         val progressBar = holder.progressBar
         progressBar.visibility = View.VISIBLE
         val picture = holder.picture
         Picasso.get()
-            .load(usuario.img)
+            .load(user.img)
             .error(R.drawable.ic_round_account_circle)
             .into(picture, object : Callback {
                 override fun onSuccess() {
@@ -50,7 +50,7 @@ class RecyclerViewAdapter(private val mUsuarios: List<Usuario>) :
     }
 
     override fun getItemCount(): Int {
-        return mUsuarios.size
+        return mUsers.size
     }
 
 }

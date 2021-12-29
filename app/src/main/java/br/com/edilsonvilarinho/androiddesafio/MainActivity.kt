@@ -16,14 +16,14 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         mainViewModel = ViewModelProvider(this).get(MainViewModel::class.java)
-        mainViewModel.obterContatos()
-        mainViewModel.contatos.observe(this, {
+        mainViewModel.users.observe(this, {
             binding.userListProgressBar.visibility = View.GONE
             var adapter = RecyclerViewAdapter(it)
             binding.recyclerView.adapter = adapter
             binding.recyclerView.layoutManager = LinearLayoutManager(this)
         })
         binding.userListProgressBar.visibility = View.VISIBLE
+        mainViewModel.getUsers()
         setContentView(binding.root)
     }
 }
