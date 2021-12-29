@@ -19,7 +19,7 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         mainViewModel = ViewModelProvider(this).get(MainViewModel::class.java)
         initViews()
-        observes()
+        observeViewModel()
         mainViewModel.getUsers()
         setContentView(binding.root)
     }
@@ -30,7 +30,7 @@ class MainActivity : AppCompatActivity() {
         binding.recyclerView.layoutManager = LinearLayoutManager(this)
     }
 
-    private fun observes() {
+    private fun observeViewModel() {
         mainViewModel.users.observe(this, {
             adapter.mUsers = it
         })
