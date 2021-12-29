@@ -18,8 +18,8 @@ class MainViewModel : ViewModel() {
     fun getUsers() {
         val retrofitClient =
             Network.getRetrofitInstance("https://609a908e0f5a13001721b74e.mockapi.io/picpay/api/")
-        val picPayService = retrofitClient.create(PicPayService::class.java)
-        val callback = picPayService.getUsers()
+        val userService = retrofitClient.create(UserService::class.java)
+        val callback = userService.getUsers()
         callback.enqueue(object : Callback<List<User>> {
             override fun onFailure(call: Call<List<User>>, t: Throwable) {
                 mUsers.value = ArrayList()
