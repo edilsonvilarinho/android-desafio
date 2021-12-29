@@ -24,13 +24,13 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
     }
 
-    fun initViews() {
+    private fun initViews() {
         adapter = RecyclerViewAdapter()
         binding.recyclerView.adapter = adapter
         binding.recyclerView.layoutManager = LinearLayoutManager(this)
     }
 
-    fun observes() {
+    private fun observes() {
         mainViewModel.users.observe(this, {
             adapter.mUsers = it
         })
