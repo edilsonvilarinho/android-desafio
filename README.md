@@ -1,4 +1,4 @@
-# PicPay - Desafio Android
+# Desafio Android
 
 <img src="https://github.com/edilsonvilarinho/android-desafio/blob/main/images/Android-Emulator-Pixel_4_XL_API_31_5554-2021-12-28-23-28-39.gif" width="300"/>
 
