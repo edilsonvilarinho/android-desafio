@@ -1,4 +1,4 @@
-package br.com.edilsonvilarinho.androiddesafio.data
+package br.com.edilsonvilarinho.androiddesafio.data.remote
 
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory

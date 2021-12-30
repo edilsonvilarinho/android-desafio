@@ -1,8 +1,9 @@
-package br.com.edilsonvilarinho.androiddesafio.data
+package br.com.edilsonvilarinho.androiddesafio.data.local
 
 import android.content.Context
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
+import br.com.edilsonvilarinho.androiddesafio.data.local.db.DataBaseConstants
 
 class UserDataBaseHelper(context: Context) :
     SQLiteOpenHelper(context, DATABASE_NAME, null, DATABASE_VERSION) {

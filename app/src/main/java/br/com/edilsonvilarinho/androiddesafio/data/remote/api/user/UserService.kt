@@ -1,7 +1,7 @@
-package br.com.edilsonvilarinho.androiddesafio.data
+package br.com.edilsonvilarinho.androiddesafio.data.remote.api.user
 
 
-import br.com.edilsonvilarinho.androiddesafio.domain.User
+import br.com.edilsonvilarinho.androiddesafio.data.model.User
 import retrofit2.Call
 import retrofit2.http.GET
 

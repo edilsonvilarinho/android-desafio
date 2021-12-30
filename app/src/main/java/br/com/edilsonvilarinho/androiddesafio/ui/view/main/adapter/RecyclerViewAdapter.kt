@@ -7,7 +7,7 @@ import android.widget.ProgressBar
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import br.com.edilsonvilarinho.androiddesafio.R
-import br.com.edilsonvilarinho.androiddesafio.domain.User
+import br.com.edilsonvilarinho.androiddesafio.data.model.User
 import com.squareup.picasso.Callback
 import com.squareup.picasso.Picasso
 import de.hdodenhof.circleimageview.CircleImageView

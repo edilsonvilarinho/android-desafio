@@ -1,4 +1,4 @@
-package br.com.edilsonvilarinho.androiddesafio.domain
+package br.com.edilsonvilarinho.androiddesafio.data.model
 
 import com.google.gson.annotations.SerializedName
 

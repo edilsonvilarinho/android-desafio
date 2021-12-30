@@ -4,10 +4,10 @@ import android.app.Application
 import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
-import br.com.edilsonvilarinho.androiddesafio.data.Network
-import br.com.edilsonvilarinho.androiddesafio.domain.User
-import br.com.edilsonvilarinho.androiddesafio.data.UserRepository
-import br.com.edilsonvilarinho.androiddesafio.data.UserService
+import br.com.edilsonvilarinho.androiddesafio.data.remote.Network
+import br.com.edilsonvilarinho.androiddesafio.data.model.User
+import br.com.edilsonvilarinho.androiddesafio.data.local.db.UserDataBase
+import br.com.edilsonvilarinho.androiddesafio.data.remote.api.user.UserService
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -21,8 +21,8 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
     }
     var userListProgressBar = mUserListProgressBar
 
-    private val mUserRepository: UserRepository =
-        UserRepository.getInstance(application.applicationContext)
+    private val mUserDataBase: UserDataBase =
+        UserDataBase.getInstance(application.applicationContext)
 
     fun getUsers() {
         val retrofitClient =
@@ -48,12 +48,12 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
     }
 
     private fun persistUsers() {
-        if (mUserRepository.getAll()?.isEmpty() == true) {
+        if (mUserDataBase.getAll()?.isEmpty() == true) {
             mUsers.value?.forEach {
-                mUserRepository.save(it)
+                mUserDataBase.save(it)
             }
         } else {
-            Log.i("persistUsers: ", mUserRepository.getAll()?.size.toString())
+            Log.i("persistUsers: ", mUserDataBase.getAll()?.size.toString())
         }
     }
 

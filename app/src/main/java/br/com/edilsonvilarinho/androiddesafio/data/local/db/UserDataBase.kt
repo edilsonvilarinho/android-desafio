@@ -1,21 +1,22 @@
-package br.com.edilsonvilarinho.androiddesafio.data
+package br.com.edilsonvilarinho.androiddesafio.data.local.db
 
 import android.annotation.SuppressLint
 import android.content.ContentValues
 import android.content.Context
 import android.database.Cursor
 import android.util.Log
-import br.com.edilsonvilarinho.androiddesafio.domain.User
+import br.com.edilsonvilarinho.androiddesafio.data.local.UserDataBaseHelper
+import br.com.edilsonvilarinho.androiddesafio.data.model.User
 
-class UserRepository private constructor(context: Context) {
+class UserDataBase private constructor(context: Context) {
 
     private var mUserDataBaseHelper: UserDataBaseHelper = UserDataBaseHelper(context)
 
     companion object {
-        private lateinit var respository: UserRepository
-        fun getInstance(context: Context): UserRepository {
+        private lateinit var respository: UserDataBase
+        fun getInstance(context: Context): UserDataBase {
             if (!Companion::respository.isInitialized) {
-                respository = UserRepository(context)
+                respository = UserDataBase(context)
             }
             return respository
         }
