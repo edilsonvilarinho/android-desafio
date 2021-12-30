@@ -1,4 +1,4 @@
-package br.com.edilsonvilarinho.androiddesafio
+package br.com.edilsonvilarinho.androiddesafio.data
 
 import android.content.Context
 import android.database.sqlite.SQLiteDatabase

@@ -1,9 +1,13 @@
-package br.com.edilsonvilarinho.androiddesafio
+package br.com.edilsonvilarinho.androiddesafio.ui.view.main
 
 import android.app.Application
 import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
+import br.com.edilsonvilarinho.androiddesafio.data.Network
+import br.com.edilsonvilarinho.androiddesafio.domain.User
+import br.com.edilsonvilarinho.androiddesafio.data.UserRepository
+import br.com.edilsonvilarinho.androiddesafio.data.UserService
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response

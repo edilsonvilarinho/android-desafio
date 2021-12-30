@@ -1,4 +1,4 @@
-package br.com.edilsonvilarinho.androiddesafio
+package br.com.edilsonvilarinho.androiddesafio.data
 
 class DataBaseConstants private constructor() {
     object USER {

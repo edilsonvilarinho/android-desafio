@@ -1,6 +1,7 @@
-package br.com.edilsonvilarinho.androiddesafio
+package br.com.edilsonvilarinho.androiddesafio.data
 
 
+import br.com.edilsonvilarinho.androiddesafio.domain.User
 import retrofit2.Call
 import retrofit2.http.GET
 

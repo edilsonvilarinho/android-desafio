@@ -1,4 +1,4 @@
-package br.com.edilsonvilarinho.androiddesafio
+package br.com.edilsonvilarinho.androiddesafio.ui.view.main
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
@@ -6,6 +6,7 @@ import androidx.core.view.isVisible
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import br.com.edilsonvilarinho.androiddesafio.databinding.ActivityMainBinding
+import br.com.edilsonvilarinho.androiddesafio.ui.view.main.adapter.RecyclerViewAdapter
 
 class MainActivity : AppCompatActivity() {
 

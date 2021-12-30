@@ -1,10 +1,11 @@
-package br.com.edilsonvilarinho.androiddesafio
+package br.com.edilsonvilarinho.androiddesafio.data
 
 import android.annotation.SuppressLint
 import android.content.ContentValues
 import android.content.Context
 import android.database.Cursor
 import android.util.Log
+import br.com.edilsonvilarinho.androiddesafio.domain.User
 
 class UserRepository private constructor(context: Context) {
 
@@ -13,7 +14,7 @@ class UserRepository private constructor(context: Context) {
     companion object {
         private lateinit var respository: UserRepository
         fun getInstance(context: Context): UserRepository {
-            if (!::respository.isInitialized) {
+            if (!Companion::respository.isInitialized) {
                 respository = UserRepository(context)
             }
             return respository
