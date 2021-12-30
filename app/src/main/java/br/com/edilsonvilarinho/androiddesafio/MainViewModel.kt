@@ -1,12 +1,14 @@
 package br.com.edilsonvilarinho.androiddesafio
 
+import android.app.Application
+import android.util.Log
+import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class MainViewModel : ViewModel() {
+class MainViewModel(application: Application) : AndroidViewModel(application) {
 
     private var mUsers = MutableLiveData<List<User>>()
     var users = mUsers
@@ -14,6 +16,9 @@ class MainViewModel : ViewModel() {
         this.value = true
     }
     var userListProgressBar = mUserListProgressBar
+
+    private val mUserRepository: UserRepository =
+        UserRepository.getInstance(application.applicationContext)
 
     fun getUsers() {
         val retrofitClient =
@@ -29,13 +34,23 @@ class MainViewModel : ViewModel() {
             override fun onResponse(call: Call<List<User>>, response: Response<List<User>>) {
                 if (response.code() == 200) {
                     mUsers.value = response.body()
+                    persistUsers()
                 } else {
                     mUsers.value = ArrayList()
                 }
                 mUserListProgressBar.value = false
             }
         })
+    }
 
+    private fun persistUsers() {
+        if (mUserRepository.getAll()?.isEmpty() == true) {
+            mUsers.value?.forEach {
+                mUserRepository.save(it)
+            }
+        } else {
+            Log.i("persistUsers: ", mUserRepository.getAll()?.size.toString())
+        }
     }
 
 }
