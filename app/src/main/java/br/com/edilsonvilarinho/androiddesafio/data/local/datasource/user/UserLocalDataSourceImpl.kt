@@ -1,26 +1,21 @@
 package br.com.edilsonvilarinho.androiddesafio.data.local.datasource.user
 
 import android.content.Context
-import br.com.edilsonvilarinho.androiddesafio.data.local.db.UserDataBase
-import br.com.edilsonvilarinho.androiddesafio.data.model.User
+import br.com.edilsonvilarinho.androiddesafio.data.local.db.AppDatabase
+import br.com.edilsonvilarinho.androiddesafio.data.local.db.entity.UserEntity
 
 class UserLocalDataSourceImpl(context: Context) : UserLocalDataSource {
 
-    private val mUserDataBase: UserDataBase =
-        UserDataBase.getInstance(context)
+    private val database = AppDatabase.getDatabase(context)
 
-    override fun getUsers(): List<User> {
-        return mUserDataBase.getAll()!!
+    override suspend fun getUsers(): List<UserEntity> {
+        return database.userDao().getUsers()
     }
 
-    override fun insertUsers(userList: List<User>) {
-        if (mUserDataBase.getAll()!!.isNotEmpty()) {
-            userList.forEach {
-                mUserDataBase.delete(it.id)
-            }
-        }
+    override suspend fun insertUsers(userList: List<UserEntity>) {
         userList.forEach {
-            mUserDataBase.save(it)
+            database.userDao().insert(it)
         }
     }
+
 }

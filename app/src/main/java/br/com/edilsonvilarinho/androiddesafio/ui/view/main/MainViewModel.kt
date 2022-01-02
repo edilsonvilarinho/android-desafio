@@ -1,19 +1,11 @@
 package br.com.edilsonvilarinho.androiddesafio.ui.view.main
 
 import android.app.Application
-import android.content.Context
-import android.util.Log
 import androidx.lifecycle.*
-import br.com.edilsonvilarinho.androiddesafio.data.remote.Network
 import br.com.edilsonvilarinho.androiddesafio.data.model.User
-import br.com.edilsonvilarinho.androiddesafio.data.local.db.UserDataBase
-import br.com.edilsonvilarinho.androiddesafio.data.remote.api.user.UserService
 import br.com.edilsonvilarinho.androiddesafio.data.repository.UserRepository
 import br.com.edilsonvilarinho.androiddesafio.data.repository.UserRepositoryImpl
 import kotlinx.coroutines.launch
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
 
 class MainViewModel(val app: Application) : AndroidViewModel(app) {
 
