@@ -1,7 +1,8 @@
 package br.com.edilsonvilarinho.androiddesafio.data.remote.datasource.user
 
 import br.com.edilsonvilarinho.androiddesafio.data.model.User
+import retrofit2.Response
 
 interface UserRemoteDataSource {
-    fun getUsers(): List<User>
+   suspend fun getUsers(): List<User>
 }
