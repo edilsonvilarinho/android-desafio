@@ -23,6 +23,7 @@ class MainViewModel(val app: Application) : AndroidViewModel(app) {
     val userListProgressBar: LiveData<Boolean> = mUserListProgressBar
     private val mError = MutableLiveData<Exception>()
     val error: LiveData<Exception> = mError
+    val repository: UserRepository = UserRepositoryImpl(app)
 
     init {
         getUsers()
@@ -32,12 +33,12 @@ class MainViewModel(val app: Application) : AndroidViewModel(app) {
         viewModelScope.launch {
             try {
                 mUserListProgressBar.value = true
-                UserRepositoryImpl(app).getUsers()?.let {
+                repository.getUsers()?.let {
                     mUsers.value = it
                 }
             } catch (e: Exception) {
                 mError.value = e
-                mUsers.value = UserRepositoryImpl(app).users
+                mUsers.value = repository.getLocalUsers()
             } finally {
                 mUserListProgressBar.value = false
             }

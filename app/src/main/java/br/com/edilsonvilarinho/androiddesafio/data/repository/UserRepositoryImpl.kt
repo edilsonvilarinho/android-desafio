@@ -10,13 +10,15 @@ class UserRepositoryImpl(context: Context) : UserRepository {
     private val mUserDataBase: UserDataBase =
         UserDataBase.getInstance(context)
 
-    val users: List<User>? = mUserDataBase.getAll()
-
     override suspend fun getUsers(): List<User>? {
         val users: List<User> = UserRemoteDataSourceImpl().getUsers()
         users.forEach {
             mUserDataBase.save(it)
         }
+        return mUserDataBase.getAll()
+    }
+
+    override suspend fun getLocalUsers(): List<User>? {
         return mUserDataBase.getAll()
     }
 }
