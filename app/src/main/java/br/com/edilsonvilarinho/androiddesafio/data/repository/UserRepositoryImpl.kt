@@ -10,16 +10,16 @@ import br.com.edilsonvilarinho.androiddesafio.data.remote.datasource.user.UserRe
 
 class UserRepositoryImpl(val context: Context) : UserRepository {
 
-    private val userRemoteDataSource: UserLocalDataSource = UserLocalDataSourceImpl(context)
+    private val userLocalDataSource: UserLocalDataSource = UserLocalDataSourceImpl(context)
 
 
     override suspend fun getUsers(): List<User>? {
         val users: List<User> = UserRemoteDataSourceImpl().getUsers()
-        userRemoteDataSource.insertUsers(users.map { it.toUserEntity() })
-        return userRemoteDataSource.getUsers().map { it.toUser() }
+        userLocalDataSource.insertUsers(users.map { it.toUserEntity() })
+        return userLocalDataSource.getUsers().map { it.toUser() }
     }
 
     override suspend fun getLocalUsers(): List<User>? {
-        return userRemoteDataSource.getUsers().map { it.toUser() }
+        return userLocalDataSource.getUsers().map { it.toUser() }
     }
 }
