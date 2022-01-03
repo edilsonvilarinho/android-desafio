@@ -11,8 +11,7 @@ import br.com.edilsonvilarinho.androiddesafio.data.repository.UserRepositoryImpl
 import kotlinx.coroutines.launch
 
 class MainViewModel(
-    val app: Application,
-    val repository: UserRepository = UserRepositoryImpl(app)
+    val app: Application
 ) : AndroidViewModel(app) {
 
     private val mUsers = MutableLiveData<List<User>>()
@@ -21,7 +20,7 @@ class MainViewModel(
     val userListProgressBar: LiveData<Boolean> = mUserListProgressBar
     private val mError = MutableLiveData<Exception>()
     val error: LiveData<Exception> = mError
-
+    val repository: UserRepository = UserRepositoryImpl(app)
     init {
         getUsers()
     }
