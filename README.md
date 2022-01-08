@@ -1,5 +1,7 @@
 # Desafio Android
 
+- App in KOTLIN + MVVM + ROOM + RETROFIT + COROUTINES + KOIN
+
 <img src="https://github.com/edilsonvilarinho/android-desafio/blob/main/images/Android-Emulator-Pixel_4_XL_API_28_5554-2022-01-01-23-19-33.gif" width="300"/>
 
 Um dos desafios de qualquer time de desenvolvimento é lidar com código legado e no PicPay isso não é diferente. Um dos objetivos de trazer os melhores desenvolvedores do Brasil é atacar o problema. Para isso, essa etapa do processo consiste numa proposta de solução para o desafio abaixo e você pode escolher a melhor forma de resolvê-lo, de acordo com sua comodidade e disponibilidade de tempo:
